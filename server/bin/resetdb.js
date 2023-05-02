@@ -6,12 +6,14 @@ const fs = require("fs");
 const chalk = require("chalk");
 const { Client } = require("pg");
 const dbParams = require("../lib/db.js");
-const db = new Client(dbParams);
+// const db = new Client(dbParams);
 
 // PG connection setup
-// const connectionString = process.env.DATABASE_URL ||
-//   `postgresql://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}?sslmode=disable`;
-// const client = new Client();
+const connectionString =
+  process.env.DATABASE_URL ||
+  `postgresql://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}?sslmode=disable`;
+const db = new Client({ connectionString: connectionString });
+
 
 // Loads the schema files from db/schema
 const runSchemaFiles = async () => {
@@ -38,6 +40,7 @@ const runSeedFiles = async () => {
 
 const runResetDB = async () => {
   try {
+    console.log(dbParams.host);
     dbParams.host &&
       console.log(`-> Connecting to PG on ${dbParams.host} as ${dbParams.user}...`);
     dbParams.connectionString &&
