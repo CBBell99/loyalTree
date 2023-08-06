@@ -20,8 +20,8 @@ function GiftCardListItem(props) {
 
   const getCard = (id) => {
     axios
-      .get(`/cards/${gift_card_id}`)
-      .then((res) => {
+      .get(`${process.env.REACT_APP_BACKEND_URL}/cards/${gift_card_id}`)
+      .then(res => {
         //navigates to card to show single card how to pass data?
         navigate(`/cards/${gift_card_id}`, {
           state: {
@@ -37,7 +37,7 @@ function GiftCardListItem(props) {
           },
         });
       })
-      .catch((err) => console.log(err.message));
+      .catch(err => console.log(err.message));
   };
 
   return (

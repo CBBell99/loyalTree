@@ -8,7 +8,7 @@ const Cards = () => {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    axios.get(`/cards`).then((res) => {
+    axios.get(`${process.env.REACT_APP_BACKEND_URL}/cards`).then(res => {
       setCards(res.data.data);
     });
   }, []);

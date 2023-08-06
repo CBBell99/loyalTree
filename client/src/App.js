@@ -29,7 +29,7 @@ function App() {
     context.user = {};
     localStorage.clear();
 
-    axios.post("/logout");
+    axios.post(`${process.env.REACT_APP_BACKEND_URL}/logout`);
 
     return navigate("/");
   };

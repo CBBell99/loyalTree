@@ -30,7 +30,6 @@ const ADD_USER = (params) => {
 const STORES = "SELECT * FROM stores";
 
 const STORE_DETAIL = (params) => {
-  console.log("params in query", params);
   return [
     `
     SELECT * FROM stores

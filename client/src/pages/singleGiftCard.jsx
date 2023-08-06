@@ -64,15 +64,20 @@ const SingleGiftCard = (props) => {
 
   const onTransfer = (email, amount) => {
     const id = params.id;
-    axios.put(`/cards/${id}`, { amount, email }).then((res) => {
-      setText("Processing");
-      setTimeout(() => {
-        setText("Thanks KV!!!");
+    axios
+      .put(`${process.env.REACT_APP_BACKEND_URL}/cards/${id}`, {
+        amount,
+        email,
+      })
+      .then(res => {
+        setText('Processing');
         setTimeout(() => {
-          navigate("/cards");
+          setText('Thanks KV!!!');
+          setTimeout(() => {
+            navigate('/cards');
+          }, 1000);
         }, 1000);
-      }, 1000);
-    });
+      });
   };
   console.log(gift_card_id);
   return (

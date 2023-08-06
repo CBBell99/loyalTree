@@ -13,8 +13,10 @@ const Dashboard = (props) => {
   const [view, setView] = useState({ redeem: false, transactions: false });
 
   useEffect(() => {
-    const promiseOne = axios.get("/dashboard");
-    const promiseTwo = axios.get("/dashboard/transactions");
+    const promiseOne = axios.get(`${process.env.REACT_APP_BACKEND_URL}/dashboard`);
+    const promiseTwo = axios.get(
+      `${process.env.REACT_APP_BACKEND_URL}/dashboard/transactions`,
+    );
     Promise.all([promiseOne, promiseTwo]).then(values => {
       setStoreInfo(values[0].data);
       setTransactions(values[1].data.data);
