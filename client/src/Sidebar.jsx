@@ -23,10 +23,10 @@ export default function Sidebar(props) {
     if (props.user) {
       axios.get(`${process.env.REACT_APP_BACKEND_URL}/user`).then(res => {
         const currentUser = res.data.user;
-        setUser(...currentUser);
+        setUser(currentUser);
       });
     }
-  }, [props.user]);
+  }, [props.user, props.setUser]);
 
   return (
     <Menu
@@ -37,7 +37,7 @@ export default function Sidebar(props) {
       {props.user && (
         <span>
           <p>
-            Hello, {user.first_name}!
+            {/* Hello, {user.first_name}! */}
             <FontAwesomeIcon icon="fa-solid fa-coins" /> {user.points}
           </p>
         </span>
