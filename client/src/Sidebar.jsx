@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Sidebar.css";
 
 export default function Sidebar(props) {
-  const [user, setUser] = useState([]);
+  const [user, setUser] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
 
   const closeMenu = () => {
@@ -37,7 +37,7 @@ export default function Sidebar(props) {
       {props.user && (
         <span>
           <p>
-            Hello, {user.first_name}!{" "}
+            Hello, {user.first_name}!
             <FontAwesomeIcon icon="fa-solid fa-coins" /> {user.points}
           </p>
         </span>
