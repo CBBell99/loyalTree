@@ -29,7 +29,7 @@ function StoreListItem(props) {
   const onPay = (email, amount) => {
     // const id = context.userID;
     axios
-      .post(`/cards/${params.id}`, {
+      .post(`${process.env.REACT_APP_BACKEND_URL}/cards/${params.id}`, {
         email,
         amount: amount,
         // user_id: ${id,
@@ -50,7 +50,7 @@ function StoreListItem(props) {
   const onRedeem = (email, amount) => {
     const id = context.userID;
     axios
-      .post(`/stores/${params.id}/redeem/`, {
+      .post(`${process.env.REACT_APP_BACKEND_URL}/stores/${params.id}/redeem/`, {
         email,
         amount: amount,
         user_id: id,
